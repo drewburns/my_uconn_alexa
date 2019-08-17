@@ -22,8 +22,8 @@ const MenuIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'The menu!';
-        // const location = handlerInput["slots"]["location"]["value"];
-        // const meal_time = handlerInput["slots"]["time"]["value"];
+        const location = handlerInput.requestEnvelope["slots"]["location"]["value"];
+        const meal_time = handlerInput.requestEnvelope["slots"]["time"]["value"];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
