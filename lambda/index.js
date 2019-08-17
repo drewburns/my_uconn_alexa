@@ -18,7 +18,7 @@ const LaunchRequestHandler = {
 const MenuIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MenuIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'menu';
     },
     handle(handlerInput) {
         const speakOutput = 'The menu!';
