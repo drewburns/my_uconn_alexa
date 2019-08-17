@@ -8,7 +8,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome, you can say Hello or Help. Which would you like to try?';
+        const speakOutput = 'Welcome to Uconn Menu and Bus Tracker';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
@@ -17,8 +17,9 @@ const LaunchRequestHandler = {
 };
 const MenuIntentHandler = {
     canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'menu';
+        return true
+        // return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+        //     && Alexa.getIntentName(handlerInput.requestEnvelope) === 'menu';
     },
     handle(handlerInput) {
         const speakOutput = 'The menu!';
