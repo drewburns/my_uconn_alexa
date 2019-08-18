@@ -37,7 +37,7 @@ var getMenuRequest = function(location, time, callback) {
 const getMenuResponse = (location,time) => {
     getMenuRequest(location,time, function(body, error) {
         if (error) {
-            console.log('error')
+            return 'An error occurred';
         } else {
             console.log(body);
         }
