@@ -52,6 +52,9 @@ const getMenuString = (location,time,body) => {
 };
 const getMenuResponse = (location,time, handlerInput, responseBuilder) => {
     getMenuRequest(location,time, function(body, error) {
+        console.log(body);
+        console.log(error);
+        console.log('inside response');
         if (error) {
             const speakString = 'An error occurred';
             return handlerInput.responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
