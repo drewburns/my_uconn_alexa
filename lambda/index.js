@@ -24,17 +24,18 @@ const MenuIntentHandler = {
         const speakOutput = 'The menu!';
         const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
         const { intent } = requestEnvelope.request;
-        try {
-            const location = intent["slots"]["location"]["value"];
-            const meal_time = intent["slots"]["time"]["value"];
-            return handlerInput.responseBuilder.speak('Is good');
-            // get_menu_response(intent)
-        } catch(err) {
-            return handlerInput.responseBuilder.speak('Something wong');
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            // .getResponse();
-            // continue_dialog()
-        }
+        return handlerInput.responseBuilder.speak('Is good');
+        // try {
+        //     const location = intent["slots"]["location"]["value"];
+        //     const meal_time = intent["slots"]["time"]["value"];
+        //     return handlerInput.responseBuilder.speak('Is good');
+        //     // get_menu_response(intent)
+        // } catch(err) {
+        //     return handlerInput.responseBuilder.speak('Something wong');
+        //     //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+        //     // .getResponse();
+        //     // continue_dialog()
+        // }
     }
 };
 const BusIntentHandler = {
