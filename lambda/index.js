@@ -4,7 +4,16 @@
 const Alexa = require('ask-sdk-core');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-const getMenuResponse = {
+const getMenuResponse = (location,time) => {
+    var xmlHttp = new XMLHttpRequest();
+    const location_dict = {"buckley": "03" , "towers": "42", "mcmahon": "05", "north": "07", "northwest": "15", "putnam": "06","south":"16","whitney": "01"};
+    const userLocation = location_dict[location];
+    const userTime = time.toLowerCase();
+    const theUrl = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    const htmlResponse = xmlHttp.responseText;
+    return 'yeehaw';
 };
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
