@@ -10,9 +10,9 @@ const getMenuResponse = (location,time) => {
     const userLocation = location_dict[location];
     const userTime = time.toLowerCase();
     const theUrl = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`
-    // xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    // xmlHttp.send( null );
-    // const htmlResponse = xmlHttp.responseText;
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    const htmlResponse = xmlHttp.responseText;
     return 'yeehaw';
 };
 const LaunchRequestHandler = {
