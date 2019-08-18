@@ -24,7 +24,7 @@ const MenuIntentHandler = {
         // const speakOutput = 'The menu!';
         // const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
         // const { intent } = requestEnvelope.request;
-        return handlerInput.responseBuilder.speak('Is good');
+        return handlerInput.responseBuilder.speak('Is good').getResponse();
         // try {
         //     const location = intent["slots"]["location"]["value"];
         //     const meal_time = intent["slots"]["time"]["value"];
