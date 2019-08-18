@@ -27,9 +27,9 @@ const MenuIntentHandler = {
         const location = intent["slots"]["location"]["value"];
         const meal_time = intent["slots"]["time"]["value"];
         if (meal_time && location) {
-            return handlerInput.responseBuilder.speak('Is good').getResponse();
+            return handlerInput.responseBuilder.speak('Is good').withShouldEndSession(false).getResponse();
         } else {
-            return handlerInput.responseBuilder.speak('Something wong').getResponse();
+            return handlerInput.responseBuilder.speak('Something wong').withShouldEndSession(false).getResponse();
         }
         // try {
         //     const location = intent["slots"]["location"]["value"];
