@@ -2,18 +2,41 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var http = require('http');
 
-const getMenuResponse = (location,time) => {
-    var xmlHttp = new XMLHttpRequest();
+var getMenuRequest = function(location, time, callback) {
+
     const location_dict = {"buckley": "03" , "towers": "42", "mcmahon": "05", "north": "07", "northwest": "15", "putnam": "06","south":"16","whitney": "01"};
     const userLocation = location_dict[location];
     const userTime = time.toLowerCase();
-    const theUrl = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    console.log('test2');
-    xmlHttp.send( null );
-    console.log('test3');
+    const url = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`
+
+  var req = http.get(url, (res) => {
+    var body = "";
+
+    res.on("data", (chunk) => {
+      body += chunk;
+    });
+
+    res.on("end", () => {
+      console.log(body);
+
+      callback(body);
+      //callback('test');
+    });
+  }).on("error", (error) => {
+    //callback(err);
+    console.log('error');
+  });
+};
+const getMenuResponse = (location,time) => {
+    getMenuRequest(location,time, function(body, error) {
+        if (error) {
+            console.log('error')
+        } else {
+            console.log(body);
+        }
+    });
     // const htmlResponse = xmlHttp.responseText;
     return 'yeehaw';
 };
