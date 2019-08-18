@@ -36,7 +36,7 @@ var getMenuRequest = function(location, time, callback) {
   });
 };
 const getMenuString = (location,time,body) => {
-    // const $ = cheerio.load(body);
+    const $ = cheerio.load(body);
     const itemArray = [];
     const itemHtml = $('.longmenucoldispname');
     if (itemHtml.length === 0) {
