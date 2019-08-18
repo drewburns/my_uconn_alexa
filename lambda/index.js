@@ -3,6 +3,8 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 
+const getMenuResponse = {
+};
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
@@ -27,21 +29,11 @@ const MenuIntentHandler = {
         const location = intent["slots"]["location"]["value"];
         const meal_time = intent["slots"]["time"]["value"];
         if (meal_time && location) {
-            return handlerInput.responseBuilder.speak('Is good').withShouldEndSession(false).getResponse();
+            const menuResponse = getMenuResponse(location,time);
+            return handlerInput.responseBuilder.speak(menuResponse).withShouldEndSession(false).getResponse();
         } else {
             return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
         }
-        // try {
-        //     const location = intent["slots"]["location"]["value"];
-        //     const meal_time = intent["slots"]["time"]["value"];
-        //     return handlerInput.responseBuilder.speak('Is good').getResponse();
-        //     // get_menu_response(intent)
-        // } catch(err) {
-        //     return handlerInput.responseBuilder.speak('Something wong').getResponse();
-        //     //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-        //     // .getResponse();
-        //     // continue_dialog()
-        // }
     }
 };
 const BusIntentHandler = {
