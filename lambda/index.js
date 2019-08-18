@@ -25,7 +25,7 @@ var getMenuRequest = function(location, time, callback) {
     });
 
     res.on("end", () => {
-      console.log(body);
+      console.log('ended getting it');
 
       callback(body);
       //callback('test');
