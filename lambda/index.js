@@ -27,10 +27,10 @@ const MenuIntentHandler = {
         try {
             const location = intent["slots"]["location"]["value"];
             const meal_time = intent["slots"]["time"]["value"];
-            return handlerInput.responseBuilder.speak(speakOutput)
+            return handlerInput.responseBuilder.speak('Is good');
             // get_menu_response(intent)
         } catch(err) {
-            return handlerInput.responseBuilder.addDelegateDirective({'type': 'Dialog.Delegate'}).getResponse();
+            return handlerInput.responseBuilder.speak('Something wong');
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             // .getResponse();
             // continue_dialog()
