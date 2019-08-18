@@ -11,7 +11,9 @@ const getMenuResponse = (location,time) => {
     const userTime = time.toLowerCase();
     const theUrl = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`
     xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    console.log('test2');
     xmlHttp.send( null );
+    console.log('test3');
     // const htmlResponse = xmlHttp.responseText;
     return 'yeehaw';
 };
