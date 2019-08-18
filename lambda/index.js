@@ -50,14 +50,14 @@ const getMenuString = (location,time,body) => {
     const menuString = itemArray.slice(0, itemArray.length - 1).join(', ') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
     return `For ${time} at ${location}, there is ${menuString}`;
 };
-const getMenuResponse = (location,time, responseBuilder) => {
+const getMenuResponse = (location,time, handlerInput, responseBuilder) => {
     getMenuRequest(location,time, function(body, error) {
         if (error) {
             const speakString = 'An error occurred';
-            return responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
+            return handlerInput.responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
         } else {
             const speakString = getMenuString(location,time,body);
-            return responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
+            return handlerInput.responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
         }
     });
     // const htmlResponse = xmlHttp.responseText;
@@ -88,7 +88,7 @@ const MenuIntentHandler = {
         if (meal_time && location) {
             const menuResponse = getMenuResponse(location,meal_time);
             console.log(menuResponse);
-            getMenuResponse(location, meal_time, responseBuilder);
+            getMenuResponse(location, meal_time, handlerInput, responseBuilder);
         } else {
             return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
         }
