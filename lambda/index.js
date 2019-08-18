@@ -5,14 +5,14 @@ const Alexa = require('ask-sdk-core');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 const getMenuResponse = (location,time) => {
-    // var xmlHttp = new XMLHttpRequest();
-    // const location_dict = {"buckley": "03" , "towers": "42", "mcmahon": "05", "north": "07", "northwest": "15", "putnam": "06","south":"16","whitney": "01"};
-    // const userLocation = location_dict[location];
-    // const userTime = time.toLowerCase();
-    // const theUrl = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`
-    // xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    // xmlHttp.send( null );
-    // const htmlResponse = xmlHttp.responseText;
+    var xmlHttp = new XMLHttpRequest();
+    const location_dict = {"buckley": "03" , "towers": "42", "mcmahon": "05", "north": "07", "northwest": "15", "putnam": "06","south":"16","whitney": "01"};
+    const userLocation = location_dict[location];
+    const userTime = time.toLowerCase();
+    const theUrl = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    const htmlResponse = xmlHttp.responseText;
     return 'yeehaw';
 };
 const LaunchRequestHandler = {
@@ -39,7 +39,7 @@ const MenuIntentHandler = {
         const location = intent["slots"]["location"]["value"];
         const meal_time = intent["slots"]["time"]["value"];
         if (meal_time && location) {
-            const menuResponse = getMenuResponse(location,time);
+            const menuResponse = getMenuResponse(location,meal_time);
             return handlerInput.responseBuilder.speak(menuResponse).withShouldEndSession(false).getResponse();
         } else {
             return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
