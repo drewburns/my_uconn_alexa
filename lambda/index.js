@@ -21,9 +21,9 @@ const MenuIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'menu';
     },
     handle(handlerInput) {
-        const speakOutput = 'The menu!';
-        const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
-        const { intent } = requestEnvelope.request;
+        // const speakOutput = 'The menu!';
+        // const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
+        // const { intent } = requestEnvelope.request;
         return handlerInput.responseBuilder.speak('Is good');
         // try {
         //     const location = intent["slots"]["location"]["value"];
