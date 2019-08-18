@@ -35,6 +35,8 @@ var getMenuRequest = function(location, time, callback) {
   });
 };
 const getMenuString = (location,time,body) => {
+    const cheerio = require('cheerio');
+    console.log(cheerio);
     const $ = cheerio.load(body);
     const itemArray = [];
     const itemHtml = $('.longmenucoldispname');
