@@ -3,12 +3,12 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 var http = require('http');
-const cheerio = require('cheerio');
+// const cheerio = require('cheerio');
 
-function capitalize(s)
-{
-    return s[0].toUpperCase() + s.slice(1);
-}
+// function capitalize(s)
+// {
+//     return s[0].toUpperCase() + s.slice(1);
+// }
 
 var getMenuRequest = function(location, time, callback) {
 
