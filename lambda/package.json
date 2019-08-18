@@ -13,6 +13,7 @@
     "ask-sdk-model": "^1.18.0",
     "aws-sdk": "^2.326.0",
     "jquery" : "^3.4.1",
-    "xmlhttprequest" : "^1.8.0"
+    "xmlhttprequest" : "^1.8.0",
+    "cheerio" : "^1.0.0"
   }
 }
