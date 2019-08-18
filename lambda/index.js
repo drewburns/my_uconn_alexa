@@ -36,23 +36,26 @@ var getMenuRequest = function(location, time, callback) {
   });
 };
 const getMenuString = (location,time,body) => {
-    const $ = cheerio.load(result);
-    // console.log(result);
+    const $ = cheerio.load(body);
     const itemArray = [];
-    const menuItems = $('.longmenucoldispname').map(function(i, el) {
-      // this === el
+    const itemHtml = $('.longmenucoldispname');
+    if (itemHtml.length === 0) {
+        return `There is nothing for ${time} at ${location}`;
+    }
+    const menuItems = itemHtml.map(function(i, el) {
       itemArray.push($(this).text());
     });
     // const menuString = ""
     // menuItems.map(i => menuString += i.text());
     const menuString = itemArray.slice(0, itemArray.length - 1).join(', ') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
+    return `For ${time} at ${location}, there is ${menuString}`;
 };
 const getMenuResponse = (location,time) => {
     getMenuRequest(location,time, function(body, error) {
         if (error) {
             return 'An error occurred';
         } else {
-            console.log(body);
+            return getMenuString(location,time,body);
         }
     });
     // const htmlResponse = xmlHttp.responseText;
