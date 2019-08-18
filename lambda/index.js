@@ -3,6 +3,7 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 var http = require('http');
+const cheerio = require('cheerio');
 
 function capitalize(s)
 {
@@ -34,6 +35,18 @@ var getMenuRequest = function(location, time, callback) {
     console.log('error');
   });
 };
+const getMenuString = (location,time,body) => {
+    const $ = cheerio.load(result);
+    // console.log(result);
+    const itemArray = [];
+    const menuItems = $('.longmenucoldispname').map(function(i, el) {
+      // this === el
+      itemArray.push($(this).text());
+    });
+    // const menuString = ""
+    // menuItems.map(i => menuString += i.text());
+    const menuString = itemArray.slice(0, itemArray.length - 1).join(', ') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
+};
 const getMenuResponse = (location,time) => {
     getMenuRequest(location,time, function(body, error) {
         if (error) {
@@ -43,7 +56,6 @@ const getMenuResponse = (location,time) => {
         }
     });
     // const htmlResponse = xmlHttp.responseText;
-    return 'yeehaw';
 };
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
