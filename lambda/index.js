@@ -86,8 +86,8 @@ const MenuIntentHandler = {
         const location = intent["slots"]["location"]["value"];
         const meal_time = intent["slots"]["time"]["value"];
         if (meal_time && location) {
-            const menuResponse = getMenuResponse(location,meal_time);
-            console.log(menuResponse);
+            // const menuResponse = getMenuResponse(location,meal_time);
+            // console.log(menuResponse);
             getMenuResponse(location, meal_time, handlerInput, responseBuilder);
         } else {
             return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
