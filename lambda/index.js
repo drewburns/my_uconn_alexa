@@ -29,7 +29,7 @@ const MenuIntentHandler = {
         if (meal_time && location) {
             return handlerInput.responseBuilder.speak('Is good').withShouldEndSession(false).getResponse();
         } else {
-            return handlerInput.responseBuilder.speak('Something wong').withShouldEndSession(false).getResponse();
+            return handlerInput.responseBuilder.speak('Something wong').withShouldEndSession(false).addDelegateDirective({'type': 'Dialog.Delegate'}).getResponse();
         }
         // try {
         //     const location = intent["slots"]["location"]["value"];
