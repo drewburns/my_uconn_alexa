@@ -3,6 +3,7 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 var http = require('http');
+const cheerio = require('cheerio');
 
 function capitalize(s)
 {
@@ -35,8 +36,6 @@ var getMenuRequest = function(location, time, callback) {
   });
 };
 const getMenuString = (location,time,body) => {
-    const cheerio = require('cheerio');
-    console.log(cheerio);
     const $ = cheerio.load(body);
     const itemArray = [];
     const itemHtml = $('.longmenucoldispname');
