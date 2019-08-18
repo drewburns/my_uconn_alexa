@@ -22,12 +22,19 @@ const MenuIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'The menu!';
-        const location = handlerInput.requestEnvelope["slots"]["location"]["value"];
-        const meal_time = handlerInput.requestEnvelope["slots"]["time"]["value"];
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
+        const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
+        const { intent } = requestEnvelope.request;
+        try {
+            const location = intent["slots"]["location"]["value"];
+            const meal_time = intent["slots"]["time"]["value"];
+            return handlerInput.responseBuilder.speak(speakOutput)
+            // get_menu_response(intent)
+        } catch(err) {
+            return handlerInput.responseBuilder.addDelegateDirective({'type': 'Dialog.Delegate'}).getResponse();
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
+            // .getResponse();
+            // continue_dialog()
+        }
     }
 };
 const BusIntentHandler = {
