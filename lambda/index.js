@@ -3,7 +3,7 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 var http = require('http');
-// const cheerio = require('cheerio');
+const cheerio = require('cheerio');
 
 function capitalize(s)
 {
