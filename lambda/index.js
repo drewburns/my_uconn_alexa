@@ -57,10 +57,9 @@ const getMenuResponse = async (location,time) => {
     
     // const test = await getMenuRequest(location,time);
     // console.log("test");
-    const x = await getMenuRequest(location,time);
-    console.log('awaited stuff');
-    console.log(x);
-    return x;
+    const htmlResponse = await getMenuRequest(location,time);
+    const speakString = getMenuString(location,time,htmlResponse);
+    return speakString;
     // return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
     // getMenuRequest(location,time, function(body, error) {
     //     console.log(body);
@@ -104,11 +103,7 @@ const MenuIntentHandler = {
             // console.log(menuResponse);
             try {
                 const responseString = await getMenuResponse(location, meal_time);
-                console.log('about to respond');
-                console.log('------------');
-                console.log(responseString);
-                console.log('-------------')
-                return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
+                return handlerInput.responseBuilder.speak(responseString).withShouldEndSession(false).getResponse();
             }catch(error) {
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
             }
