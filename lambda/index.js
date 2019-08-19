@@ -53,8 +53,9 @@ const getMenuString = (location,time,body) => {
 const getMenuResponse = async (location,time, handlerInput, responseBuilder) => {
     
     // const test = await getMenuRequest(location,time);
-    console.log("test");
-    return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
+    // console.log("test");
+    return "test123";
+    // return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
     // getMenuRequest(location,time, function(body, error) {
     //     console.log(body);
     //     console.log(error);
@@ -95,8 +96,8 @@ const MenuIntentHandler = {
         if (meal_time && location) {
             // const menuResponse = getMenuResponse(location,meal_time);
             // console.log(menuResponse);
-            await getMenuResponse(location, meal_time, handlerInput, responseBuilder);
-            return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
+            const responseString = await getMenuResponse(location, meal_time, handlerInput, responseBuilder);
+            return handlerInput.responseBuilder.speak(responseString).withShouldEndSession(false).getResponse();
         } else {
             return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
         }
