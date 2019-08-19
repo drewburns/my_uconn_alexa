@@ -50,7 +50,7 @@ const getMenuString = (location,time,body) => {
     });
     // const menuString = ""
     // menuItems.map(i => menuString += i.text());
-    const menuString = itemArray.slice(0, itemArray.length - 1).join(',') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
+    const menuString = itemArray.slice(0, itemArray.length - 1).join(', ') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
     return `For ${time} at ${location}, there is ${menuString}`;
 };
 const getMenuResponse = async (location,time) => {
@@ -108,7 +108,7 @@ const MenuIntentHandler = {
                 responseString.replace("'", "");
                 console.log('response String');
                 console.log(responseString);
-                return handlerInput.responseBuilder.speak(responseString.slice(0,59)).withShouldEndSession(false).getResponse();
+                return handlerInput.responseBuilder.speak(responseString.slice(0,70)).withShouldEndSession(false).getResponse();
             }catch(error) {
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
             }
