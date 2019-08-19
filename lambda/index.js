@@ -54,7 +54,9 @@ const getMenuResponse = async (location,time, handlerInput, responseBuilder) => 
     
     // const test = await getMenuRequest(location,time);
     // console.log("test");
-    return "test123";
+    const x = await getMenuRequest(location,time);
+    console.log(x);
+    return x;
     // return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
     // getMenuRequest(location,time, function(body, error) {
     //     console.log(body);
