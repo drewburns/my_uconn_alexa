@@ -102,7 +102,8 @@ const MenuIntentHandler = {
             // const menuResponse = getMenuResponse(location,meal_time);
             // console.log(menuResponse);
             try {
-                const responseString = await getMenuResponse(location, meal_time);
+                let responseString = await getMenuResponse(location, meal_time);
+                responseString.replace("w/", "with");
                 console.log('response String');
                 console.log(responseString);
                 return handlerInput.responseBuilder.speak(responseString.slice(0,15)).withShouldEndSession(false).getResponse();
