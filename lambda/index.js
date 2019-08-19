@@ -16,24 +16,23 @@ var getMenuRequest = function(location, time, callback) {
     const userLocation = location_dict[location];
     const userTime = capitalize(time);
     const url = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`;
+    return new Promise((resolve, reject) => {
+        var req = http.get(url, (res) => {
+        var body = "";
 
-  var req = http.get(url, (res) => {
-    var body = "";
+        res.on("data", (chunk) => {
+            body += chunk;
+        });
 
-    res.on("data", (chunk) => {
-      body += chunk;
+        res.on("end", () => {
+            resolve(body);
+            //callback('test');
+        });
+        }).on("error", (error) => {
+            //callback(err);
+            reject('error');
+        });
     });
-
-    res.on("end", () => {
-      console.log('ended getting it');
-
-      callback(body);
-      //callback('test');
-    });
-  }).on("error", (error) => {
-    //callback(err);
-    console.log('error');
-  });
 };
 const getMenuString = (location,time,body) => {
     const $ = cheerio.load(body);
@@ -98,8 +97,12 @@ const MenuIntentHandler = {
         if (meal_time && location) {
             // const menuResponse = getMenuResponse(location,meal_time);
             // console.log(menuResponse);
-            const responseString = await getMenuResponse(location, meal_time, handlerInput, responseBuilder);
-            return handlerInput.responseBuilder.speak(responseString).withShouldEndSession(false).getResponse();
+            try {
+                const responseString = await getMenuResponse(location, meal_time, handlerInput, responseBuilder);
+                return handlerInput.responseBuilder.speak(responseString).withShouldEndSession(false).getResponse();
+            }catch(error) {
+                return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
+            }
         } else {
             return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
         }
