@@ -10,7 +10,7 @@ function capitalize(s)
     return s[0].toUpperCase() + s.slice(1);
 }
 
-var getMenuRequest = function(location, time) {
+var getMenuRequest = async function(location, time) {
     console.log('start');
   const location_dict = {"buckley": "03" , "towers": "42", "mcmahon": "05", "north": "07", "northwest": "15", "putnam": "06","south":"16","whitney": "01"};
     const userLocation = location_dict[location];
