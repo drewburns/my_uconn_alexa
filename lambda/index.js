@@ -105,7 +105,7 @@ const MenuIntentHandler = {
                 const responseString = await getMenuResponse(location, meal_time);
                 console.log('response String');
                 console.log(responseString);
-                return handlerInput.responseBuilder.speak(responseString).withShouldEndSession(false).getResponse();
+                return handlerInput.responseBuilder.speak(responseString.slice(0,15)).withShouldEndSession(false).getResponse();
             }catch(error) {
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
             }
