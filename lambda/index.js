@@ -10,8 +10,8 @@ function capitalize(s)
     return s[0].toUpperCase() + s.slice(1);
 }
 
-var getMenuRequest = function(location, time, callback) {
-
+var getMenuRequest = function(location, time) {
+    console.log('start');
   const location_dict = {"buckley": "03" , "towers": "42", "mcmahon": "05", "north": "07", "northwest": "15", "putnam": "06","south":"16","whitney": "01"};
     const userLocation = location_dict[location];
     const userTime = capitalize(time);
@@ -25,10 +25,14 @@ var getMenuRequest = function(location, time, callback) {
         });
 
         res.on("end", () => {
+            console.log('end');
+            console.log(body);
             resolve(body);
             //callback('test');
         });
         }).on("error", (error) => {
+            console.log('error');
+            console.log(error);
             //callback(err);
             reject('error');
         });
