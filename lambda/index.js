@@ -103,12 +103,6 @@ const MenuIntentHandler = {
             // console.log(menuResponse);
             try {
                 let responseString = await getMenuResponse(location, meal_time);
-                responseString.replace("w/", "with");
-                responseString.replace("&", "and");
-                responseString.replace("<", "");
-                responseString.replace("'", "");
-                console.log('response String');
-                console.log(responseString);
                 return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
             }catch(error) {
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
