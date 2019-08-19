@@ -54,13 +54,14 @@ const getMenuResponse = async (location,time, handlerInput, responseBuilder) => 
     
     // const test = await getMenuRequest(location,time);
     console.log("test");
+    return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
     // getMenuRequest(location,time, function(body, error) {
     //     console.log(body);
     //     console.log(error);
     //     console.log('inside response');
     //     if (error) {
     //         const speakString = 'An error occurred';
-    //         return handlerInput.responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
+            // return handlerInput.responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
     //     } else {
     //         const speakString = getMenuString(location,time,body);
     //         return handlerInput.responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
