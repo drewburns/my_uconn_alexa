@@ -50,7 +50,7 @@ const getMenuString = (location,time,body) => {
     const menuString = itemArray.slice(0, itemArray.length - 1).join(', ') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
     return `For ${time} at ${location}, there is ${menuString}`;
 };
-const getMenuResponse = (location,time, handlerInput, responseBuilder) => {
+const getMenuResponse = async (location,time, handlerInput, responseBuilder) => {
     
     // const test = await getMenuRequest(location,time);
     console.log("test");
@@ -95,7 +95,8 @@ const MenuIntentHandler = {
         if (meal_time && location) {
             // const menuResponse = getMenuResponse(location,meal_time);
             // console.log(menuResponse);
-            getMenuResponse(location, meal_time, handlerInput, responseBuilder);
+            await getMenuResponse(location, meal_time, handlerInput, responseBuilder);
+            return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
         } else {
             return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
         }
