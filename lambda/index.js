@@ -108,7 +108,7 @@ const MenuIntentHandler = {
                 responseString.replace("'", "");
                 console.log('response String');
                 console.log(responseString);
-                return handlerInput.responseBuilder.speak(responseString.slice(0,70)).withShouldEndSession(false).getResponse();
+                return handlerInput.responseBuilder.speak(responseString.slice(0,90)).withShouldEndSession(false).getResponse();
             }catch(error) {
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
             }
