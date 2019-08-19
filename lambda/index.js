@@ -86,7 +86,7 @@ const MenuIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'menu';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         const speakOutput = 'The menu!';
         const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
         const { intent } = requestEnvelope.request;
@@ -95,7 +95,7 @@ const MenuIntentHandler = {
         if (meal_time && location) {
             // const menuResponse = getMenuResponse(location,meal_time);
             // console.log(menuResponse);
-            getMenuResponse(location, meal_time, handlerInput, responseBuilder);
+            await getMenuResponse(location, meal_time, handlerInput, responseBuilder);
         } else {
             return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
         }
