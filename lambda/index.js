@@ -52,8 +52,8 @@ const getMenuString = (location,time,body) => {
 };
 const getMenuResponse = async (location,time, handlerInput, responseBuilder) => {
     
-    const test = await getMenuRequest(location,time);
-    console.log(test);
+    // const test = await getMenuRequest(location,time);
+    console.log("test");
     // getMenuRequest(location,time, function(body, error) {
     //     console.log(body);
     //     console.log(error);
