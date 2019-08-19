@@ -50,7 +50,7 @@ const getMenuString = (location,time,body) => {
     });
     // const menuString = ""
     // menuItems.map(i => menuString += i.text());
-    const menuString = itemArray.slice(0, itemArray.length - 1).join(', ') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
+    const menuString = itemArray.slice(0, itemArray.length - 1).join(',') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
     return `For ${time} at ${location}, there is ${menuString}`;
 };
 const getMenuResponse = async (location,time) => {
