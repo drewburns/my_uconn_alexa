@@ -39,7 +39,7 @@ var getMenuRequest = async function(location, time) {
     });
 };
 
-var getBusRequest = async function(line, stop) {
+var getBusRequest = async function(stop) {
   console.log('start bus');
     const url = `https://huskygo.transloc.com/t/stops/${stop}`;
     return new Promise((resolve, reject) => {
@@ -120,6 +120,13 @@ const MenuIntentHandler = {
         }
     }
 };
+
+const getBusResponse = async (bus_name, bus_id, location_name, location_id) => {
+    
+    // const htmlResponse = await getMenuRequest(location,time);
+    // const speakString = getMenuString(location,time,htmlResponse);
+    return "yolo";
+};
 const BusIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
@@ -134,10 +141,20 @@ const BusIntentHandler = {
         const bus_name = intent['slots']['bus_line']['value'];
         const bus_location_id = intent['slots']['bus_location']["resolutions"]["resolutionsPerAuthority"][0]["values"][0]["value"]["id"];
         const bus_location_name = intent['slots']['bus_location']['value'];
-        return handlerInput.responseBuilder
-            .speak(speakOutput)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
-            .getResponse();
+        if (bus_location && bus_name) {
+            try {
+                let responseString = await getBusResponse(bus_name, bus_id, bus_location_name, bus_location_id);
+                return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
+            }catch(error) {
+                return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
+            }
+        } else {
+            return handlerInput.responseBuilder.withShouldEndSession(false).addDelegateDirective(intent).getResponse();
+        }
+        // return handlerInput.responseBuilder
+        //     .speak(speakOutput)
+        //     //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+        //     .getResponse();
     }
 };
 const HelpIntentHandler = {
