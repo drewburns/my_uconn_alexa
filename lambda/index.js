@@ -125,7 +125,7 @@ const MenuIntentHandler = {
 const BusIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'BusIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'bus';
     },
     handle(handlerInput) {
         const speakOutput = 'The bus!';
