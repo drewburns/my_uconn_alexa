@@ -41,7 +41,7 @@ var getMenuRequest = async function(location, time) {
 
 var getBusRequest = async function(line, stop) {
   console.log('start bus');
-    const url = `https://huskygo.transloc.com/t/stops/4230330`;
+    const url = `https://huskygo.transloc.com/t/stops/${stop}`;
     return new Promise((resolve, reject) => {
         var req = http.get(url, (res) => {
         var body = "";
@@ -129,6 +129,9 @@ const BusIntentHandler = {
     },
     handle(handlerInput) {
         const speakOutput = 'The bus!';
+        const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
+        const { intent } = requestEnvelope.request;
+        console.log(intent);
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
