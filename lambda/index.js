@@ -38,6 +38,32 @@ var getMenuRequest = async function(location, time) {
         });
     });
 };
+
+var getBusRequest = async function(line, stop) {
+  console.log('start bus');
+    const url = `https://huskygo.transloc.com/t/stops/4230330`;
+    return new Promise((resolve, reject) => {
+        var req = http.get(url, (res) => {
+        var body = "";
+
+        res.on("data", (chunk) => {
+            body += chunk;
+        });
+
+        res.on("end", () => {
+            console.log('end');
+            console.log(body);
+            resolve(body);
+            //callback('test');
+        });
+        }).on("error", (error) => {
+            console.log('error');
+            console.log(error);
+            //callback(err);
+            reject('error');
+        });
+    });
+};
 const getMenuString = (location,time,body) => {
     const $ = cheerio.load(body);
     const itemArray = [];
