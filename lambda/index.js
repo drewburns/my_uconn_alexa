@@ -42,6 +42,7 @@ var getMenuRequest = async function(location, time) {
 var getBusRequest = async function(stop) {
   console.log('start bus');
     const url = `https://huskygo.transloc.com/t/stops/${stop}`;
+    console.log(url);
     return new Promise((resolve, reject) => {
         var req = http.get(url, (res) => {
         var body = "";
