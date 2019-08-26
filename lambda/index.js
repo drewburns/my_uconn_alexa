@@ -125,7 +125,7 @@ const BusIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'bus';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         const speakOutput = 'The bus!';
         const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
         const { intent } = requestEnvelope.request;
