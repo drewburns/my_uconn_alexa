@@ -55,25 +55,9 @@ const getMenuString = (location,time,body) => {
 };
 const getMenuResponse = async (location,time) => {
     
-    // const test = await getMenuRequest(location,time);
-    // console.log("test");
     const htmlResponse = await getMenuRequest(location,time);
     const speakString = getMenuString(location,time,htmlResponse);
     return speakString;
-    // return handlerInput.responseBuilder.speak("yolo").withShouldEndSession(false).getResponse();
-    // getMenuRequest(location,time, function(body, error) {
-    //     console.log(body);
-    //     console.log(error);
-    //     console.log('inside response');
-    //     if (error) {
-    //         const speakString = 'An error occurred';
-            // return handlerInput.responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
-    //     } else {
-    //         const speakString = getMenuString(location,time,body);
-    //         return handlerInput.responseBuilder.speak(speakString).withShouldEndSession(false).getResponse();
-    //     }
-    // });
-    // const htmlResponse = xmlHttp.responseText;
 };
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
