@@ -123,7 +123,8 @@ const MenuIntentHandler = {
 
 const getBusResponse = async (bus_name, bus_id, location_name, location_id) => {
     
-    // const htmlResponse = await getMenuRequest(location,time);
+    const htmlResponse = await getBusRequest(location_id);
+    console.log(htmlResponse);
     // const speakString = getMenuString(location,time,htmlResponse);
     return "yolo";
 };
