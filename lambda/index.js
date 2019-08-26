@@ -141,7 +141,7 @@ const BusIntentHandler = {
         const bus_name = intent['slots']['bus_line']['value'];
         const bus_location_id = intent['slots']['bus_location']["resolutions"]["resolutionsPerAuthority"][0]["values"][0]["value"]["id"];
         const bus_location_name = intent['slots']['bus_location']['value'];
-        if (bus_location && bus_name) {
+        if (bus_location_name && bus_name) {
             try {
                 let responseString = await getBusResponse(bus_name, bus_id, bus_location_name, bus_location_id);
                 return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
