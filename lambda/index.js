@@ -130,8 +130,10 @@ const BusIntentHandler = {
         const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
         const { intent } = requestEnvelope.request;
         // ["resolutions"]["resolutionsPerAuthority"]["values"][0]["value"]["id"]
-        console.log(intent['slots']['bus_line']["resolutions"]["resolutionsPerAuthority"][0]["values"][0]["value"]["id"]);
-        console.log(intent['slots']['bus_location']["resolutions"]["resolutionsPerAuthority"][0]["values"][0]["value"]["id"]);
+        const bus_id = intent['slots']['bus_line']["resolutions"]["resolutionsPerAuthority"][0]["values"][0]["value"]["id"];
+        const bus_name = intent['slots']['bus_line']['value'];
+        const bus_location_id = intent['slots']['bus_location']["resolutions"]["resolutionsPerAuthority"][0]["values"][0]["value"]["id"];
+        const bus_location_name = intent['slots']['bus_location']['value'];
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
