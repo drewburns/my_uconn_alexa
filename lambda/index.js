@@ -109,8 +109,6 @@ const MenuIntentHandler = {
         const location = intent["slots"]["location"]["value"];
         const meal_time = intent["slots"]["time"]["value"];
         if (meal_time && location) {
-            // const menuResponse = getMenuResponse(location,meal_time);
-            // console.log(menuResponse);
             try {
                 let responseString = await getMenuResponse(location, meal_time);
                 return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
