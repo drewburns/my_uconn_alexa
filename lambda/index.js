@@ -129,7 +129,8 @@ const BusIntentHandler = {
         const speakOutput = 'The bus!';
         const { requestEnvelope, attributesManager, responseBuilder } = handlerInput;
         const { intent } = requestEnvelope.request;
-        console.log(intent);
+        console.log(intent['slots']['bus_line']);
+        console.log(intent['slots']['bus_location']);
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
