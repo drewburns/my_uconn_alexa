@@ -21,6 +21,7 @@ var getMenuRequest = async function(location, time) {
         var body = "";
 
         res.on("data", (chunk) => {
+            console.log(chunk);
             body += chunk;
         });
 
