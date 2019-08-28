@@ -45,7 +45,6 @@ var getBusRequest = async function(stop) {
     console.log(url);
     return new Promise((resolve, reject) => {
         var req = http.get(url, (res) => {
-        console.log(res);
         var body = "";
 
         res.on("data", (chunk) => {
