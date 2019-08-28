@@ -62,7 +62,7 @@ var getBusRequest = async function(stop) {
             console.log('error');
             console.log(error);
             //callback(err);
-            reject('error');
+            reject(error);
         });
     });
 };
@@ -115,6 +115,7 @@ const MenuIntentHandler = {
                 let responseString = await getMenuResponse(location, meal_time);
                 return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
             }catch(error) {
+                console.log(error);
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
             }
         } else {
