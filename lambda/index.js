@@ -149,6 +149,7 @@ const BusIntentHandler = {
         if (bus_location_name && bus_name) {
             try {
                 let responseString = await getBusResponse(bus_name, bus_id, bus_location_name, bus_location_id);
+                console.log('response:', responseString);
                 return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
             }catch(error) {
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
