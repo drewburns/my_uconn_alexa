@@ -34,7 +34,7 @@ var getMenuRequest = async function(location, time) {
             console.log('error');
             console.log(error);
             //callback(err);
-            reject('error');
+            reject(error);
         });
     });
 };
