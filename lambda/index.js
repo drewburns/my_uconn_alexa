@@ -153,6 +153,8 @@ const BusIntentHandler = {
                 console.log('response:', responseString);
                 return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
             }catch(error) {
+                console.log('someting wong');
+                console.log(error);
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
             }
         } else {
