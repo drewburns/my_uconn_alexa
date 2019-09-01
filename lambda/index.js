@@ -121,7 +121,6 @@ const MenuIntentHandler = {
 };
 
 const getBusResponse = async (bus_name, bus_id, location_name, location_id) => {
-    console.log('getting response ....');
     const htmlResponse = await getBusRequest(location_id);
     console.log('got response');
     console.log(htmlResponse);
