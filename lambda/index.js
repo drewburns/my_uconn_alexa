@@ -49,19 +49,14 @@ var getBusRequest = async function(stop) {
         var body = "";
 
         res.on("data", (chunk) => {
-            console.log(chunk);
             body += chunk;
         });
 
         res.on("end", () => {
-            console.log('end');
-            console.log(body);
             resolve(body);
             //callback('test');
         });
         }).on("error", (error) => {
-            console.log('error');
-            console.log(error);
             //callback(err);
             reject(error);
         });
@@ -149,12 +144,10 @@ const BusIntentHandler = {
         const bus_location_name = intent['slots']['bus_location']['value'];
         if (bus_location_name && bus_name) {
             try {
-                console.log('before response');
                 let responseString = await getBusResponse(bus_name, bus_id, bus_location_name, bus_location_id);
-                console.log('response:', responseString);
+                // console.log(responseString)
                 return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
             }catch(error) {
-                console.log('someting wong');
                 console.log(error);
                 return handlerInput.responseBuilder.speak("Error occurred").withShouldEndSession(false).getResponse();
             }
