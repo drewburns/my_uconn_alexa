@@ -3,6 +3,7 @@
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
 var http = require('http');
+var https = require('https');
 const cheerio = require('cheerio');
 
 function capitalize(s)
@@ -44,7 +45,7 @@ var getBusRequest = async function(stop) {
     const url = `https://huskygo.transloc.com/t/stops/${stop}`;
     console.log(url);
     return new Promise((resolve, reject) => {
-        var req = http.get(url, (res) => {
+        var req = https.get(url, (res) => {
         var body = "";
 
         res.on("data", (chunk) => {
