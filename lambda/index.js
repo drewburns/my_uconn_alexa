@@ -122,10 +122,23 @@ const MenuIntentHandler = {
 
 const getBusResponse = async (bus_name, bus_id, location_name, location_id) => {
     const htmlResponse = await getBusRequest(location_id);
-    console.log('got response');
-    console.log(htmlResponse);
+    const $ = cheerio.load(htmlResponse);
+    const busTime = $(`a[href="/t/routes/${bus_id}"]`);
+    const waitTimes = $(busTime[2]).text();
+    let times = waitTimes;
+    times = times.replace("<", "less than ");
+    times = times.replace("&", "minutes and");
+    times = times.replace("mins", "minutes");
+    console.log(times);
+    
+    if (times === '') {
+        return `This bus is either not running or does not stop at that location.`
+    }
+    if (times.includes('--')) {
+        return `Time not available at this moment.`
+    }
     // const speakString = getMenuString(location,time,htmlResponse);
-    return "yolo";
+    return `The ${bus_name} line is coming to ${location_name} in ${times}`;
 };
 const BusIntentHandler = {
     canHandle(handlerInput) {
