@@ -18,6 +18,7 @@ var getMenuRequest = async function(location, time) {
     const userLocation = location_dict[location.toLowerCase()];
     const userTime = capitalize([time]);
     const url = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`;
+    console.log(url);
     return new Promise((resolve, reject) => {
         var req = http.get(url, (res) => {
         var body = "";
