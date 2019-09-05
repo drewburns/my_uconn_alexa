@@ -15,8 +15,8 @@ var getMenuRequest = async function(location, time) {
     const location_dict = {"buckley": "03" , "towers": "42", "mcmahon": "05", "north": "07", "northwest": "15", "putnam": "06","south":"16","whitney": "01"};
     // remove this , this is bad but a fix
     const time_dict = {'lunch' : "Lunch", 'dinner' : 'Dinner', 'breakfast': "Breakfast"}
-    const userLocation = location_dict[location];
-    const userTime = time_dict[time];
+    const userLocation = location_dict[location.toLowerCase()];
+    const userTime = capitalize([time]);
     const url = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`;
     return new Promise((resolve, reject) => {
         var req = http.get(url, (res) => {
