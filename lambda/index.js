@@ -16,7 +16,7 @@ var getMenuRequest = async function(location, time) {
     // remove this , this is bad but a fix
     const time_dict = {'lunch' : "Lunch", 'dinner' : 'Dinner', 'breakfast': "Breakfast"}
     const userLocation = location_dict[location.toLowerCase()];
-    const userTime = capitalize([time]);
+    const userTime = capitalize(time);
     const url = `http://nutritionanalysis.dds.uconn.edu/longmenu.aspx?&locationNum=${userLocation}&mealName=${userTime}`;
     console.log(url);
     return new Promise((resolve, reject) => {
