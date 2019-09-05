@@ -88,7 +88,7 @@ const LaunchRequestHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
     },
     handle(handlerInput) {
-        const speakOutput = 'Welcome to Uconn Menu and Bus Tracker';
+        const speakOutput = 'Welcome to Uconn Menu and Bus Tracker! You can ask me things like "Whats for lunch at south" or "When is the blue line coming to busby"';
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
