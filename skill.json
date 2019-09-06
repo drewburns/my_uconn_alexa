@@ -1,0 +1,41 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:274696725792:function:fdb00cf0-ea19-4f1d-88f7-46b4ffc33033:Release_0"
+        },
+        "interfaces": []
+      }
+    },
+    "privacyAndCompliance": {
+      "locales": {
+        "en-US": {}
+      },
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    },
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "pleasework",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/de71/2a426a0173c9495f9a67f7b4a7fc15f6/APP_ICON?versionId=0sIn543JE3xCzwIAexpAwc4gs.5LOUMK&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190818T162900Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190818%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=03ba1603c405f30d94c3f7cbf83351f9921c6a2f153ed6099593e29b00a55564",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/c9b5/c3b58fac9ecb4b75bc897b42e3ecef1a/APP_ICON_LARGE?versionId=r1fc6AH0yXdXjSos6CF1HZTWUpis9fB5&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20190818T162900Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=AKIAJFEYRBGIHK2BBYKA%2F20190818%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=c3a38c552b5ebd13ea3e5e2574cb84181ab5959b7cd6f0c571913f4c0fe04048",
+          "summary": "just ask hello",
+          "description": "does nothing",
+          "examplePhrases": [
+            "Alexa, open my uconn and hello"
+          ],
+          "keywords": []
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "none",
+      "category": "TRANSLATORS",
+      "distributionCountries": []
+    }
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "eastern menu",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": [
+            "cancel"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": [
+            "help",
+            "why isnt this working",
+            "i dont get it",
+            "please help",
+            "i need help"
+          ]
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": [
+            "stop"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "menu",
+          "slots": [
+            {
+              "name": "location",
+              "type": "location",
+              "samples": [
+                "Putnam",
+                "South",
+                "Northwest",
+                "North"
+              ]
+            },
+            {
+              "name": "time",
+              "type": "meal_time",
+              "samples": [
+                "Breakfast",
+                "Dinner",
+                "Lunch"
+              ]
+            }
+          ],
+          "samples": [
+            "Alexa open uconn menu and tell me whats for lunch at south",
+            "Tell me whats for {time} at {location}",
+            "What's at {location} for {time}",
+            "What's for {time} at {location}",
+            "What is on the menu at {location} for {time}",
+            "What is for {time} at {location} "
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "breakfast"
+              }
+            },
+            {
+              "name": {
+                "value": "dinner"
+              }
+            },
+            {
+              "name": {
+                "value": "lunch"
+              }
+            }
+          ],
+          "name": "meal_time"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "towers"
+              }
+            },
+            {
+              "name": {
+                "value": "whitney"
+              }
+            },
+            {
+              "name": {
+                "value": "mcmahon"
+              }
+            },
+            {
+              "name": {
+                "value": "putnam"
+              }
+            },
+            {
+              "name": {
+                "value": "south"
+              }
+            },
+            {
+              "name": {
+                "value": "north"
+              }
+            },
+            {
+              "name": {
+                "value": "northwest"
+              }
+            }
+          ],
+          "name": "location"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "menu",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "location",
+              "type": "location",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1407347605465.964450992612"
+              }
+            },
+            {
+              "name": "time",
+              "type": "meal_time",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1407347605465.1282036016337"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "SKILL_RESPONSE"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.1407347605465.964450992612",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What dining hall?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1407347605465.1282036016337",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What time?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "5"
+}
