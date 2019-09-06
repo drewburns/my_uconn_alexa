@@ -13,7 +13,6 @@ function capitalize(s)
 
 var getMenuRequest = async function(location, time) {
     const location_dict = {"buckley": "03" , "towers": "42", "mcmahon": "05", "north": "07", "northwest": "15", "putnam": "06","south":"16","whitney": "01"};
-    // remove this , this is bad but a fix
     const time_dict = {'lunch' : "Lunch", 'dinner' : 'Dinner', 'breakfast': "Breakfast"}
     const userLocation = location_dict[location.toLowerCase()];
     const userTime = capitalize(time);
@@ -28,15 +27,9 @@ var getMenuRequest = async function(location, time) {
         });
 
         res.on("end", () => {
-            console.log('end');
-            console.log(body);
             resolve(body);
-            //callback('test');
         });
         }).on("error", (error) => {
-            console.log('error');
-            console.log(error);
-            //callback(err);
             reject(error);
         });
     });
@@ -56,10 +49,8 @@ var getBusRequest = async function(stop) {
 
         res.on("end", () => {
             resolve(body);
-            //callback('test');
         });
         }).on("error", (error) => {
-            //callback(err);
             reject(error);
         });
     });
@@ -74,8 +65,6 @@ const getMenuString = (location,time,body) => {
     const menuItems = itemHtml.map(function(i, el) {
       itemArray.push($(this).text());
     });
-    // const menuString = ""
-    // menuItems.map(i => menuString += i.text());
     const menuString = itemArray.slice(0, itemArray.length - 1).join(', ') + ', and ' + itemArray.slice(itemArray.length - 1, itemArray.length);
     return `For ${time} at ${location}, there is ${menuString}`;
 };
@@ -161,7 +150,6 @@ const BusIntentHandler = {
         if (bus_location_name && bus_name) {
             try {
                 let responseString = await getBusResponse(bus_name, bus_id, bus_location_name, bus_location_id);
-                // console.log(responseString)
                 return handlerInput.responseBuilder.speak(Alexa.escapeXmlCharacters(responseString)).withShouldEndSession(false).getResponse();
             }catch(error) {
                 console.log(error);
